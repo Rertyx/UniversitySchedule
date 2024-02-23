@@ -17,16 +17,16 @@ public class ClassGroup {
     @MapsId("classId")
     private aClass aClass;
 
-    public ClassGroup(ClassGroupId classGroupId, ru.dimov.universityschedule.model.aClass aClass) {
+    public ClassGroup(ClassGroupId classGroupId, aClass aClass) {
         this.classGroupId = classGroupId;
         this.aClass = aClass;
     }
 
-    public ru.dimov.universityschedule.model.aClass getaClass() {
+    public aClass getaClass() {
         return aClass;
     }
 
-    public void setaClass(ru.dimov.universityschedule.model.aClass aClass) {
+    public void setaClass(aClass aClass) {
         this.aClass = aClass;
     }
 
