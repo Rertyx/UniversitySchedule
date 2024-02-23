@@ -11,3 +11,7 @@ create table class
     subject_id  bigint not null,
     teacher_id  bigint not null
 );
+--changeset ubik33:make-teacher-not-null
+alter table class
+alter teacher_id drop not null;
+

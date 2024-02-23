@@ -2,6 +2,15 @@ plugins {
     java
     id("org.springframework.boot") version "3.2.2"
     id("io.spring.dependency-management") version "1.1.4"
+    id("idea")
+
+}
+
+idea {
+    module {
+        isDownloadJavadoc = true
+        isDownloadSources = true
+    }
 }
 
 group = "ru.dimov"
@@ -27,6 +36,10 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.liquibase:liquibase-core")
+    implementation("org.jsoup:jsoup:1.17.2")
+    implementation("one.util:streamex:0.8.2")
+    implementation("com.google.guava:guava:33.0.0-jre")
+    implementation("org.apache.commons:commons-lang3:3.14.0")
     compileOnly("org.projectlombok:lombok")
     runtimeOnly("org.postgresql:postgresql")
     annotationProcessor("org.projectlombok:lombok")
