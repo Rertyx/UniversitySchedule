@@ -11,3 +11,8 @@ create table class
     subject_id  bigint not null,
     teacher_id  bigint not null
 );
+
+--changeset andrey:set_teacher-remove-not-null
+
+alter table class
+    alter column teacher_id drop not null;
