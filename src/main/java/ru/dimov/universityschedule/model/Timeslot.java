@@ -29,6 +29,12 @@ public class Timeslot {
         this.upper = upper;
     }
 
+    public Timeslot(DayOfWeek dayOfWeek, LocalTime time, Boolean upper) {
+        this.dayOfWeek = dayOfWeek;
+        this.time = time;
+        this.upper = upper;
+    }
+
     public Long getTimeslotId() {
         return timeslotId;
     }
@@ -53,7 +59,7 @@ public class Timeslot {
         this.time = time;
     }
 
-    public Boolean getUpper() {
+    public Boolean isUpper() {
         return upper;
     }
 
@@ -66,12 +72,12 @@ public class Timeslot {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Timeslot timeslot = (Timeslot) o;
-        return Objects.equals(getTimeslotId(), timeslot.getTimeslotId()) && Objects.equals(getDayOfWeek(), timeslot.getDayOfWeek()) && Objects.equals(getTime(), timeslot.getTime()) && Objects.equals(getUpper(), timeslot.getUpper());
+        return Objects.equals(getTimeslotId(), timeslot.getTimeslotId()) && Objects.equals(getDayOfWeek(), timeslot.getDayOfWeek()) && Objects.equals(getTime(), timeslot.getTime()) && Objects.equals(isUpper(), timeslot.isUpper());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getTimeslotId(), getDayOfWeek(), getTime(), getUpper());
+        return Objects.hash(getTimeslotId(), getDayOfWeek(), getTime(), isUpper());
     }
 
     @Override

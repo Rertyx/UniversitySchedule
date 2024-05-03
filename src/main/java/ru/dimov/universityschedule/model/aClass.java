@@ -1,8 +1,10 @@
 package ru.dimov.universityschedule.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -15,6 +17,8 @@ public class aClass {
     @Column(name = "class_id")
     private Long aClassId;
 
+    @OneToMany(mappedBy = "aClass", cascade = CascadeType.REMOVE)
+    private List<GroupAttendances> groupAttendences;
     @ManyToOne
     @JoinColumn(name = "timeslot_id")
     private Timeslot timeslot;
@@ -39,12 +43,28 @@ public class aClass {
         this.teacher = teacher;
     }
 
+    public aClass(List<GroupAttendances> groupAttendences, Timeslot timeslot, Room room, Subject subject, Teacher teacher) {
+        this.groupAttendences = groupAttendences;
+        this.timeslot = timeslot;
+        this.room = room;
+        this.subject = subject;
+        this.teacher = teacher;
+    }
+
     public Long getaClassId() {
         return aClassId;
     }
 
     public void setaClassId(Long aClassId) {
         this.aClassId = aClassId;
+    }
+
+    public List<GroupAttendances> getGroupAttendences() {
+        return groupAttendences;
+    }
+
+    public void setGroupAttendences(List<GroupAttendances> groupAttendences) {
+        this.groupAttendences = groupAttendences;
     }
 
     public Timeslot getTimeslot() {

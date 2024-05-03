@@ -11,3 +11,7 @@ create table subject
     type            text not null,
     additional_data text
 );
+
+--changeset andrey:alter-table-unique
+CREATE UNIQUE INDEX id_name_type_additional_data
+    ON subject (name, type, additional_data) nulls not distinct;

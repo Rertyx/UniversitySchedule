@@ -14,3 +14,11 @@ create table room
 --changeset andrey:alter-table-change-room_number-type
 alter table room
     alter column room_number type text;
+
+--changeset andrey:alter-table-delete-letter
+alter table room
+    drop column letter;
+
+-- changeset andrey:alter-table-unique
+CREATE UNIQUE INDEX id_building_room_number
+    ON room (building, room_number);

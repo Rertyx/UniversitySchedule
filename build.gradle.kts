@@ -41,6 +41,11 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.security:spring-security-test")
+    implementation("org.jsoup:jsoup:1.17.2")
+    implementation("com.google.guava:guava:33.1.0-jre")
+    implementation("one.util:streamex:0.8.2")
+    implementation("org.telegram:telegrambots-springboot-longpolling-starter:7.2.1")
+    implementation("org.telegram:telegrambots-client:7.2.1")
 }
 
 tasks.withType<Test> {

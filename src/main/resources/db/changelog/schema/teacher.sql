@@ -13,3 +13,7 @@ create table teacher
     email        text,
     photo        text
 );
+
+--changeset andrey:alter-table-unique
+CREATE UNIQUE INDEX id_all
+    ON teacher (name, surname, patronymic, phone_number, email, photo) nulls not distinct;

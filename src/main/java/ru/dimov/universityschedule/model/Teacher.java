@@ -32,6 +32,15 @@ public class Teacher {
         this.photo = photo;
     }
 
+    public Teacher(String name, String surname, String patronymic, String phoneNumber, String email, String photo) {
+        this.name = name;
+        this.surname = surname;
+        this.patronymic = patronymic;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.photo = photo;
+    }
+
     public Long getTeacherId() {
         return teacherId;
     }

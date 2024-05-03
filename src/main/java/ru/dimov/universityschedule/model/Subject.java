@@ -28,6 +28,12 @@ public class Subject {
         this.additionalData = additionalData;
     }
 
+    public Subject(String name, String type, String additionalData) {
+        this.name = name;
+        this.type = type;
+        this.additionalData = additionalData;
+    }
+
     public Long getSubjectId() {
         return subjectId;
     }
