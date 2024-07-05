@@ -46,6 +46,7 @@ dependencies {
     implementation("one.util:streamex:0.8.2")
     implementation("org.telegram:telegrambots-springboot-longpolling-starter:7.2.1")
     implementation("org.telegram:telegrambots-client:7.2.1")
+    implementation("org.telegram:telegrambots-extensions:7.2.1")
 }
 
 tasks.withType<Test> {

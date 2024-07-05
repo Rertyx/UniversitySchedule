@@ -9,4 +9,5 @@ import java.util.List;
 public interface GroupAttendancesRepository extends CrudRepository<GroupAttendances, GroupAttendancesId> {
 
     List<GroupAttendances> findByGroupAttendancesIdGroupId(Integer groupId);
+    boolean existsByGroupAttendancesIdGroupId(Integer groupId);
 }

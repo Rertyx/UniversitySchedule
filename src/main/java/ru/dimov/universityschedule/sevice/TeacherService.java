@@ -14,13 +14,13 @@ import ru.dimov.universityschedule.repository.TeacherRepository;
 public class TeacherService {
     private final TeacherRepository teacherRepository;
 
-    public Teacher addTeacherOrGet(Teacher teacher){
-        if(teacher == null){
+    public Teacher addTeacherOrGet(Teacher teacher) {
+        if (teacher == null) {
             return null;
         }
         try {
             return teacherRepository.findByNameAndSurnameAndPatronymic(teacher.getName(), teacher.getSurname(), teacher.getPatronymic())
-                        .orElseGet(() -> teacherRepository.save(teacher));
+                    .orElseGet(() -> teacherRepository.save(teacher));
         } catch (DataIntegrityViolationException e) {
             return addTeacherOrGet(teacher);
         }

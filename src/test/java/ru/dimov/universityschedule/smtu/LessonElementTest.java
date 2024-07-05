@@ -2,13 +2,9 @@ package ru.dimov.universityschedule.smtu;
 
 import org.assertj.core.api.Assertions;
 import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.Resource;
-import org.springframework.data.relational.core.sql.In;
 import ru.dimov.universityschedule.model.Room;
 import ru.dimov.universityschedule.model.Subject;
 import ru.dimov.universityschedule.model.Teacher;

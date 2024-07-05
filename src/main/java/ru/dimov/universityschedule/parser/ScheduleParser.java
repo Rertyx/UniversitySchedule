@@ -1,18 +1,17 @@
 package ru.dimov.universityschedule.parser;
 
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.context.event.EventListener;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionTemplate;
 import ru.dimov.universityschedule.model.*;
 import ru.dimov.universityschedule.repository.GroupAttendancesRepository;
-import ru.dimov.universityschedule.repository.SubjectRepository;
 import ru.dimov.universityschedule.repository.aClassRepository;
 import ru.dimov.universityschedule.sevice.*;
 import ru.dimov.universityschedule.smtu.LessonElement;
@@ -25,7 +24,7 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class ScheduleParser implements CommandLineRunner {
+public class ScheduleParser{
 
     private static final Logger log = LoggerFactory.getLogger(ScheduleParser.class);
     private final aClassRepository aClassRepository;
@@ -35,8 +34,11 @@ public class ScheduleParser implements CommandLineRunner {
     private final TeacherService teacherService;
     private final TimeslotService timeslotService;
     private final TransactionTemplate transactionTemplate;
-    @Override
-    public void run(String... arg) throws  Exception{
+    private final  EnvironmentService environmentService;
+
+
+    @Scheduled(cron =" 0 0 2 * * *")
+    public void ParseSchedule() throws  Exception{
         List<String> allGroups = Jsoup.connect("https://www.smtu.ru/ru/listschedule/").get().
                 select(".gr").select("a").eachText();
 
@@ -47,6 +49,13 @@ public class ScheduleParser implements CommandLineRunner {
                 throw new RuntimeException(e);
             }
         });
+    }
+
+    @EventListener(value = ContextRefreshedEvent.class)
+    public void saveTypeOfWeek() throws Exception {
+        String dayInfo = Jsoup.connect("https://www.smtu.ru/ru/listschedule/").get().select("h4").eachText().get(0);
+        String weekTypeValue = dayInfo.split(",\\ ")[2].split(" ")[0];
+        environmentService.saveIntoEnvironment("typeOfWeek", weekTypeValue);
     }
 
 
